@@ -29,3 +29,25 @@ point f(point& a,point& b,int r){
     return point(hd.x+mid.x,hd.y+mid.y);
 }
 ```
+
+### people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list
+
+- [题目](https://leetcode-cn.com/problems/people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/)
+- 思路
+    - 使用 map<int, vector<int>> 按照元素数量排个序，按照元素从多到少进行包含比较，如果没有在其他集合内，就加入答案中
+        - 集合元素数量最多的肯定在答案中（题目给出每个集合都是不同的）
+        - 实际上只要将当前集合与已经再答案的集合中比较即可（因为在当前集合之前但没有被加入答案集合的集合是答案集合的子集）
+- 工具
+    - 可用`std::includes`检查一个集合是否包含另一个集合，两个集合都必须以 operator< 排序。
+    - `c.rbegin()`返回一个逆序迭代器，它指向容器c的最后一个元素，`c.rend()`返回一个逆序迭代器，它指向容器c的第一个元素前面的位置
+```cpp
+for (auto it = indexLengthMap.rbegin(); it != indexLengthMap.rend(); it++) {
+    for (auto i : it->second) {
+        if (it != indexLengthMap.rbegin() && checkSubSet(favoriteCompanies, ans, i)) {
+            continue;
+        } else {
+            ans.push_back(i);
+        }
+    }
+}
+```
