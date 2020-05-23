@@ -51,3 +51,24 @@ for (auto it = indexLengthMap.rbegin(); it != indexLengthMap.rend(); it++) {
     }
 }
 ```
+
+### rearrange-words-in-a-sentence
+- [题目](https://leetcode-cn.com/problems/rearrange-words-in-a-sentence/)
+- 思路
+    - 申请map, key为单词长度，value为string的vector放置对应的单词；
+    - 依次拿出map中的单词
+    - 首大小写处理，尾部空格处理。
+- 工具
+    - 利用map的key自动排序特性，将相同长度的单词，都放在它后面 
+    - 将字母全转为小写：`text[0] = text[0] -('A' - 'a');`
+    - 以空格为界分割句子为单词
+```cpp
+for (int i = 0; i <= textlen; i++) {
+    if (text[i] == ' ' || i == textlen){
+       lenStrMap[tmp.size()].push_back(tmp);
+       tmp = "";
+    } else {
+        tmp += text[i];
+    }
+}
+```
