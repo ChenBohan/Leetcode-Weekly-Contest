@@ -50,7 +50,7 @@ Weekly Contest Problems on Leetcode
                 }
             }
         }
-```
+        ```
 
 ### rearrange-words-in-a-sentence
 - [题目](https://leetcode-cn.com/problems/rearrange-words-in-a-sentence/)
