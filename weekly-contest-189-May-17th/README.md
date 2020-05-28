@@ -9,26 +9,26 @@ Weekly Contest Problems on Leetcode
 - 用向量求圆心
     - 向量a+向量b=向量c
     - 向量a是两点的中点坐标，向量b是AB垂线的单位方向向量乘以高度h，向量c是圆心坐标
-```cpp
-//计算圆心
-point f(point& a,point& b,int r){
-    //算中点
-    point mid((a.x+b.x)/2.0,(a.y+b.y)/2.0);
-    //AB距离的一半
-    double d=dist(a.x,a.y,mid.x,mid.y);
-    //计算h
-    double h=sqrt(r*r-d*d);
-    //计算垂线
-    point ba(b.x-a.x,b.y-a.y);
-    point hd(-ba.y,ba.x);
-    double len=sqrt(hd.x*hd.x+hd.y*hd.y);
-    //化为单位向量
-    hd.x/=len,hd.y/=len;
-    //再乘以长度h
-    hd.x*=h,hd.y*=h;
-    return point(hd.x+mid.x,hd.y+mid.y);
-}
-```
+        ```cpp
+        //计算圆心
+        point f(point& a,point& b,int r){
+            //算中点
+            point mid((a.x+b.x)/2.0,(a.y+b.y)/2.0);
+            //AB距离的一半
+            double d=dist(a.x,a.y,mid.x,mid.y);
+            //计算h
+            double h=sqrt(r*r-d*d);
+            //计算垂线
+            point ba(b.x-a.x,b.y-a.y);
+            point hd(-ba.y,ba.x);
+            double len=sqrt(hd.x*hd.x+hd.y*hd.y);
+            //化为单位向量
+            hd.x/=len,hd.y/=len;
+            //再乘以长度h
+            hd.x*=h,hd.y*=h;
+            return point(hd.x+mid.x,hd.y+mid.y);
+        }
+        ```
 
 ### people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list
 
@@ -40,17 +40,17 @@ point f(point& a,point& b,int r){
 - 工具
     - 可用`std::includes`检查一个集合是否包含另一个集合，两个集合都必须以 operator< 排序。
     - `c.rbegin()`返回一个逆序迭代器，它指向容器c的最后一个元素，`c.rend()`返回一个逆序迭代器，它指向容器c的第一个元素前面的位置
-```cpp
-for (auto it = indexLengthMap.rbegin(); it != indexLengthMap.rend(); it++) {
-    for (auto i : it->second) {
-        if (it != indexLengthMap.rbegin() && checkSubSet(favoriteCompanies, ans, i)) {
-            continue;
-        } else {
-            ans.push_back(i);
+        ```cpp
+        for (auto it = indexLengthMap.rbegin(); it != indexLengthMap.rend(); it++) {
+            for (auto i : it->second) {
+                if (it != indexLengthMap.rbegin() && checkSubSet(favoriteCompanies, ans, i)) {
+                    continue;
+                } else {
+                    ans.push_back(i);
+                }
+            }
         }
-    }
-}
-```
+        ```
 
 ### rearrange-words-in-a-sentence
 - [题目](https://leetcode-cn.com/problems/rearrange-words-in-a-sentence/)
@@ -62,13 +62,13 @@ for (auto it = indexLengthMap.rbegin(); it != indexLengthMap.rend(); it++) {
     - 利用map的key自动排序特性，将相同长度的单词，都放在它后面 
     - 将字母全转为小写：`text[0] = text[0] -('A' - 'a');`
     - 以空格为界分割句子为单词
-```cpp
-for (int i = 0; i <= textlen; i++) {
-    if (text[i] == ' ' || i == textlen){
-       lenStrMap[tmp.size()].push_back(tmp);
-       tmp = "";
-    } else {
-        tmp += text[i];
-    }
-}
-```
+        ```cpp
+        for (int i = 0; i <= textlen; i++) {
+            if (text[i] == ' ' || i == textlen){
+               lenStrMap[tmp.size()].push_back(tmp);
+               tmp = "";
+            } else {
+                tmp += text[i];
+            }
+        }
+        ```
