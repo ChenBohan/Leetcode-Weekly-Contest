@@ -11,3 +11,5 @@ Weekly Contest Problems on Leetcode
     - 用下标访问vector时要检查是否以及开辟了空间
         - `edge.resize(n);`
 
+### probability-of-a-two-boxes-having-the-same-number-of-distinct-balls
+- [题目](https://leetcode-cn.com/problems/probability-of-a-two-boxes-having-the-same-number-of-distinct-balls/)
